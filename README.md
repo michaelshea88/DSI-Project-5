@@ -1,6 +1,5 @@
 # DSI-Project-5
-### Titanic Data
-##### Michael Shea
+### Michael Shea
 Here I analyze the Titanic dataset from the well-known [Kaggle competition](https://www.kaggle.com/c/titanic).
 
 Our task in this project was to essentially take part in Kaggle's Titanic competition. The competition, used as an introduction to many machine learning concepts, asks participants to analyze and mine a dataset containing information on 891 passengers aboard the Titanic. The goal of the competition is to build a model that effectively predicts whether a given passenger will survive or perish.
