@@ -1,4 +1,19 @@
 # DSI-Project-5
 ### Titanic Data
-
+##### Michael Shea
 Here I analyze the Titanic dataset from the well-known [Kaggle competition](https://www.kaggle.com/c/titanic).
+
+Our task in this project was to essentially take part in Kaggle's Titanic competition. The competition, used as an introduction to many machine learning concepts, asks participants to analyze and mine a dataset containing information on 891 passengers aboard the Titanic. The goal of the competition is to build a model that effectively predicts whether a given passenger will survive or perish.
+
+Over the course of my analysis, I built and tuned three models: a logistic regression, a K-nearest neighbors classifier, and a decision tree classifier.
+
+### Logistic Regression
+Logistic regression is a classification tactic that is used to predict the probability an observation will fall into a particular class. Logistic regression is often used as a binary classifier, although multinomial logistic regression is also a common technique. Since our target variable was survival, we employed a binary classification in this instance.
+A first step in our logistic regression was to scale the data, since many of our features varied substantially in scale. We used scikit-learn's StandardScaler() tool to scale the data. After scaling, we did a preliminary train test split approach to get a sense of how the model was performing. This was followed by cross-validation, which is a more reliable method of predicting classification accuracy, due to its repeated splits of the data. Our initial accuracy score for the logistic regression cross validation was .79.
+A common method of tuning a model is to use scikit-learn's GridSearchCV to assess the optimal parameters for a model. For logistic regression, the most important parameters to search for in a gridsearch are L1 and L2. L1 regularization is associated with Lasso Regression, which tends to reduce to zero coefficients that have little predictive power. L2 regularization is associated with Ridge Regression, which is a more commonly used approach and merely lowers the magnitude of coefficients without reducing them to zero.
+### K-nearest Neighbors
+Following the logistic regression, I deployed a KNN model to see how it compared. I repeated the steps I used for logistic regression, first doing a traintestsplit and then doing a gridsearch. However this time, the parameters I tuned in the gridsearch were K, or the number of neighbors to use in the model and the weights I would apply to each neighbor. Following a grid search, my optimal KNN accuracy score was __.71.
+### Decision Trees
+Finally, I created a decision tree model to ascertain how it would perform relative to the other models. Surprisingly, the max depth of the tree identified by my grid search was 5. It should be noted that decision trees of significant depth are likely overfit to training data, and I will take my accuracy score with a grain of salt. That said, the best score from my decision tree was .812.
+### Evaluating Classifiers
+Above I only mentioned accuracy score as a metric for classifer performance, but there are several other more informative methods to determine performance. They are a bit less easily interpretable, however. The first two are precision and recall, which can illuminate flaws in your model that would be obscured by a blunt accuracy score. Precision tells you the percentage of your positive predictions that wound up being correct. Recall tells you the percentage of true values you predicted in your model. The difference is more aptly illustrated in a confusion matrix, which I display in my notebook for the project. Finally, we also evaluated our classifiers based on the area under the ROC curve, which is an even more obtuse metric, yet it is even more informative. The AUC score is viewed as one of the best metrics for classification quality. The steeper the ROC curve, it means that your sensitivity is going up without an accompanying false positive rate.
